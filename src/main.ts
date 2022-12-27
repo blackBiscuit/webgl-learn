@@ -1,5 +1,5 @@
 
-import { first,second,third,fourth } from './content'
+import { first,second,third,fourth,fifth,sixth } from './content'
 import './style.css'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -7,4 +7,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <canvas id="canvas"></canvas>
   </div>
 `
-fourth()
+sixth()

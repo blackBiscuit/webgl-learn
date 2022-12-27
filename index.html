@@ -11,9 +11,10 @@
 
     <script id="vertexShader" type="x-shader/x-vertex">
       attribute vec4 a_position;
+      attribute float a_positSize;
       void main() {
           gl_Position = a_position;
-          gl_PointSize = 100.0;
+          gl_PointSize = a_positSize;
       }
     </script>
     <!-- <script id="fragmentShader" type="x-shader/x-fragment">
