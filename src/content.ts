@@ -1,6 +1,7 @@
 import { Color } from 'three'
 import { PointProps, PointFourthProps, PointSixProps } from './type/point'
 import { initColor } from './utils/color'
+import { loadBgm } from './utils/remain'
 import Compose from './object/compose'
 import Track from './object/track'
 const getGl = (): [HTMLCanvasElement, WebGLRenderingContext | null] | [] => {
@@ -358,8 +359,9 @@ export const sixth = () => {
     render()
   })
 }
-//绘制星星
+//绘制星星，使用动画使其达到星星眨眼效果
 export const seventh = () => {
+  document.title = '点击屏幕添加星星'
   const [canvas, gl] = getGl()
   if (!gl || !canvas) return
   gl.enable(gl.BLEND)
@@ -408,7 +410,6 @@ export const seventh = () => {
     })
   }
   render()
-
   canvas.addEventListener('click', (e) => {
     const { clientX, clientY } = e
     const { left, top } = canvas.getBoundingClientRect()
@@ -448,6 +449,7 @@ export const seventh = () => {
       ]
     ])
     compose.add(track)
+    loadBgm()
     const ani = () => {
       compose.update(new Date())
       render()

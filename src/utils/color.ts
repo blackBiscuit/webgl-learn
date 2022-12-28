@@ -1,3 +1,4 @@
+
 export type Colors = [number, number, number]
 // 将rgb 颜色转换为webgl颜色
 export const initColor = (colors: Colors): Colors => {
