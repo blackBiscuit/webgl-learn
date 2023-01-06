@@ -3,7 +3,8 @@
   padding: 0;
   overflow: hidden;
 }
-canvas {
+
+.sky-seventh {
   background-image: url(./assets/img/sky.jpg);
   background-repeat: no-repeat;
   background-size: cover;
