@@ -1,5 +1,5 @@
 // import { first,second,third,fourth,fifth,sixth,seventh } from './content'
-import { twelfth } from './content/index'
+import { eighteenth } from './content/index'
 import './style.css'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
@@ -7,4 +7,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <canvas id="canvas"></canvas>
   </div>
 `
-twelfth()
+eighteenth()

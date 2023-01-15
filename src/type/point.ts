@@ -22,3 +22,7 @@ export interface PointSixProps {
   size: number
   color: { r: number; g: number; b: number; a: number }
 }
+export interface WebglPointProps {
+  x: number
+  y: number
+}

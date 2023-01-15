@@ -1,3 +1,5 @@
+import { WebglPointProps } from '../type/point'
+
 export const getGl = ():
   | [HTMLCanvasElement, WebGLRenderingContext | null]
   | [] => {
@@ -35,4 +37,31 @@ export const initShader = (
   gl.linkProgram(program)
   gl.useProgram(program)
   gl.program = program
+}
+export const getMousePosWebgl = (
+  event: MouseEvent,
+  canvas: HTMLCanvasElement
+) => {
+  const { clientX, clientY } = event
+  const { width, height } = canvas
+  const { left, top } = canvas.getBoundingClientRect()
+  const [cX, cY] = [clientX - left, clientY - top]
+  // 解决原点中心差异 webgl原点处于canvas宽高一半位置处
+  const [halfWidth, halfHeight] = [width / 2, height / 2]
+  //得到鼠标基于webgl原点的位置
+  const [xBaseCenter, yBaseCenter] = [cX - halfWidth, cY - halfHeight]
+  // 解决y轴方向差异(webgl y轴与canvas2d y轴方向正好相反)
+  const yBaseCenterTop = -yBaseCenter
+  // 解决坐标基底(canvas2d以一个像素的宽高作为坐标基底,webgl以半个canvas画布宽高作为坐标基底)
+  const [x, y] = [xBaseCenter / halfWidth, yBaseCenterTop / halfHeight]
+  return { x, y }
+}
+export const glToCss = (delta: WebglPointProps, canvas: HTMLCanvasElement) => {
+  const { x, y } = delta
+  const { width, height } = canvas
+  const [halfWidth, halfHeight] = [width / 2, height / 2]
+  return {
+    x: x * halfWidth,
+    y: -y * halfHeight
+  }
 }
